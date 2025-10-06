@@ -314,7 +314,7 @@ const HeroSection = () => {
           className="flex justify-center gap-6"
         >
           <motion.a
-            href="https://linkedin.com/in/Balaji"
+            href="https://www.linkedin.com/in/balaji-praneeth/"
             target="_blank"
             rel="noopener noreferrer"
             className="w-12 h-12 rounded-full bg-secondary/50 glass flex items-center justify-center hover:bg-primary/20 transition-all group"
@@ -339,13 +339,25 @@ const HeroSection = () => {
             className="w-12 h-12 rounded-full bg-secondary/50 glass flex items-center justify-center hover:bg-primary/20 transition-all group"
             whileHover={{ scale: 1.1, y: -5 }}
             whileTap={{ scale: 0.95 }}
+            // onClick={() => {
+            //   // Download resume functionality
+            //   const link = document.createElement('a');
+            //   link.href = '/B220010CS.pdf';
+            //   link.download = 'Balaji_Praneeth_Kamal_Resume.pdf';
+            //   link.click();
+            // }}// ...existing code...
             onClick={() => {
-              // Download resume functionality
               const link = document.createElement('a');
-              link.href = '../../public/B220010CS.pdf';
+              // Update path to use root path instead of public
+              link.href = '/B220010CS.pdf';  // Note: no 'public' in the path
               link.download = 'Balaji_Praneeth_Kamal_Resume.pdf';
+              link.setAttribute('target', '_blank'); // Add this line
+              document.body.appendChild(link);  // Add this line
               link.click();
+              document.body.removeChild(link);  // Add this line
             }}
+// ...existing code...
+
           >
             <Download className="w-5 h-5 text-primary group-hover:text-cosmic-gold" />
           </motion.button>
